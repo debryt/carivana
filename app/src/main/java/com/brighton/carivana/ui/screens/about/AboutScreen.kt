@@ -1,4 +1,4 @@
-package com.brighton.carivana.ui.screens.about
+package com.sam.pay.ui.screens.about
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview

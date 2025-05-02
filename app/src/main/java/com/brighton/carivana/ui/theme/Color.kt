@@ -1,4 +1,4 @@
-package com.brighton.carivana.ui.theme
+package com.sam.quickkeys.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

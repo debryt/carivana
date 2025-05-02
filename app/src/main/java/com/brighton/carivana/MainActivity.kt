@@ -1,4 +1,4 @@
-package com.brighton.carivana
+package com.sam.quickkeys
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,14 +11,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.brighton.carivana.navigation.AppNavHost
+import com.sam.quickkeys.navigation.AppNavHost
+import com.sam.quickkeys.ui.theme.QuickkeysTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            AppNavHost()
+            QuickkeysTheme {
+                AppNavHost()
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.brighton.carivana.ui.theme
+package com.sam.quickkeys.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun CarivanaTheme(
+fun QuickkeysTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
