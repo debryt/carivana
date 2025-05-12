@@ -1,4 +1,5 @@
-package com.sam.quickkeys.model
+package com.brighton.carivana.model
+
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

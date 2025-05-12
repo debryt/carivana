@@ -1,13 +1,15 @@
-package com.sam.quickkeys.data
+package com.brighton.carivana.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.sam.quickkeys.model.User
-import com.sam.quickkeys.model.Car
-import com.sam.quickkeys.model.Booking
+import com.brighton.carivana.model.Booking
+import com.brighton.carivana.model.Car
+import com.brighton.carivana.model.User
 
+
+//841211727
 @Database(
     entities = [User::class, Car::class, Booking::class],
     version = 2,

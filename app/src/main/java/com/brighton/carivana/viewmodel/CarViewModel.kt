@@ -1,39 +1,55 @@
-package com.sam.quickkeys.viewmodel
+package com.brighton.carivana.viewmodel
 
-import android.app.Application
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
-import com.sam.quickkeys.data.AppDatabase
-import com.sam.quickkeys.model.Car
-import com.sam.quickkeys.repository.CarRepository
+import androidx.lifecycle.*
+import com.brighton.carivana.model.Car
+import com.brighton.carivana.repository.CarRepository
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 
-class CarViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository: CarRepository
-    val allCars: LiveData<List<Car>>
+open class CarViewModel(
+    private val carRepository: CarRepository
+) : ViewModel() {
 
-    init {
-        val db = AppDatabase.getDatabase(application)
-        repository = CarRepository(db.carDao())
-        allCars = repository.allCars
-    }
+    // LiveData for all cars
+    open val allCars: LiveData<List<Car>> = carRepository.allCars
 
+    // SharedFlow for emitting action messages
+    private val _carActionMessage = MutableSharedFlow<String>()
+    val carActionMessage = _carActionMessage.asSharedFlow()
+
+    // Add Car
     fun addCar(car: Car) = viewModelScope.launch {
-        repository.insertCar(car)
+        try {
+            carRepository.insertCar(car)
+            _carActionMessage.emit("Car added successfully!")
+        } catch (e: Exception) {
+            _carActionMessage.emit("Failed to add car.")
+        }
     }
 
+    // Delete Car
     fun deleteCar(car: Car) = viewModelScope.launch {
-        repository.deleteCar(car)
+        try {
+            carRepository.deleteCar(car)
+            _carActionMessage.emit("Car deleted successfully!")
+        } catch (e: Exception) {
+            _carActionMessage.emit("Failed to delete car.")
+        }
     }
 
+    // Update Car
     fun updateCar(car: Car) = viewModelScope.launch {
-        repository.updateCar(car)
+        try {
+            carRepository.updateCar(car)
+            _carActionMessage.emit("Car updated successfully!")
+        } catch (e: Exception) {
+            _carActionMessage.emit("Failed to update car.")
+        }
     }
 
-
+    // Get Car by ID
+    fun getCarById(id: Int): LiveData<Car> {
+        return carRepository.getCarById(id).asLiveData()
+    }
 }
-
-

@@ -1,15 +1,14 @@
 package com.brighton.carivana.viewmodel
 
-
+import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.brighton.carivana.repository.UserRepository
 
-class AuthViewModelFactory(private val repository: UserRepository) : ViewModelProvider.Factory {
+class BookingViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(AuthViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(BookingViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return AuthViewModel(repository) as T
+            return BookingViewModel(application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

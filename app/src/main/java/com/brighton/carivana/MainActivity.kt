@@ -1,4 +1,4 @@
-package com.sam.quickkeys
+package com.brighton.carivana
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.sam.quickkeys.navigation.AppNavHost
+import com.brighton.carivana.navigation.AppNavHost
 import com.sam.quickkeys.ui.theme.QuickkeysTheme
 
 class MainActivity : ComponentActivity() {
